@@ -2,6 +2,7 @@
 
 Just a simple script to create FB test users. You just need to copy the config.json.example to config.json and add your app's facebook id and facebook secret to it. You can get that on facebook app's developer page for your app. Then, just:
 
+    npm install
     node app
 
 And it should return you a few fields. You can grab the login url and that'll log you in as that user. Voila! 
