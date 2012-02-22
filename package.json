@@ -1,0 +1,11 @@
+{
+  "name"    : "fb-test-user",
+  "version" : "0.0.1",
+  "main"    : "./app.js",
+  "author"  : "Felix <felix@ordr.in>",
+
+  "dependencies" : {
+    "async" : "0.1.x",
+    "nconf" : "0.5.x"
+  }
+}
