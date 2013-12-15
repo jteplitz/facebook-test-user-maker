@@ -50,22 +50,16 @@
   };
 
   var makeTestUser = function make_test_user( token, cb ) {
-    /*var args = {
-      name: uname,
-      token: token
-    };
-    var qs = qsparse.stringify(args);*/
     var qs = 'name='          + encodeURI(uname)
            + '&access_token=' + token
+           + "&method=post"
            ;
     var opts = {
       hostname : fb_host,
       path     : '/' + app_id + '/accounts/test-users?' + qs
     };
-    debugger;
 
     get( opts, function( err, retval ) {
-      debugger;
       if( err ) { return cb( 'Could not get create test user: ' + err ) }
 
       var data = JSON.parse(retval);
@@ -85,16 +79,14 @@
       function( err, data ) {
         if( err ) { return cb(err); }
 
-        var data_arr = data.data;
-        if( ! data_arr || ! data_arr.length ) {
-          return cb({msg: "Unexpected return", data: data_arr});
+        if(!data) {
+          return cb({msg: "Unexpected return", data: data});
         }
 
-        var the_one = data_arr[0]; //there can be only one
         cb(null, {
-          login_url: the_one.login_url,
-          token: the_one.access_token,
-          fb_id: the_one.id
+          login_url: data.login_url,
+          access_token: data.access_token,
+          fb_id: data.id
         });
         /*console.log('Login URL : ', the_one.login_url);
         console.log('Token     : ', the_one.access_token);

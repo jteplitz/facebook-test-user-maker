@@ -11,13 +11,12 @@
     uname: nconf.get("name")
   };
                  
-                 debugger;
   generateFbUser.generateUser(options, function(err, data){
     if (err){
       return console.log("Failed with this error, sorry: ", err);
     }
     console.log('Login URL : ', data.login_url);
     console.log('Token     : ', data.access_token);
-    console.log('FB UserID : ', data.id);
+    console.log('FB UserID : ', data.fb_id);
   });
 }());
